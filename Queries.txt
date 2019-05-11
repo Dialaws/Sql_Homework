@@ -1,0 +1,54 @@
+select employees.emp_no, employees.last_name,employees.first_name, employees.gender,salaries.salary
+from employees inner join salaries
+on employees.emp_no=salaries.emp_no
+
+select *
+from employees
+where hire_date>'12/31/1985' and hire_date<'1/1/1987'
+
+select *
+from dept_manager
+
+select *
+from employees
+
+select departments.dept_no,departments.dept_name,dept_manager.emp_no, 
+employees.last_name,employees.first_name,
+dept_manager.from_date,dept_manager.to_date
+from dept_manager
+inner join departments
+on dept_manager.dept_no= departments.dept_no
+inner join employees
+on dept_manager.emp_no = employees.emp_no
+
+select employees.emp_no,employees.last_name,employees.first_name,departments.dept_name
+from dept_emp
+inner join departments
+on dept_emp.dept_no=departments.dept_no
+inner join employees
+on employees.emp_no= dept_emp.emp_no
+
+select *
+from employees
+where first_name='Hercules' And last_name LIKE 'B%'
+
+select employees.emp_no,employees.last_name,employees.first_name,departments.dept_name
+from dept_emp
+inner join departments
+on dept_emp.dept_no=departments.dept_no
+inner join employees
+on employees.emp_no= dept_emp.emp_no
+where dept_name ='Sales'
+
+select employees.emp_no,employees.last_name,employees.first_name,departments.dept_name
+from dept_emp
+inner join departments
+on dept_emp.dept_no=departments.dept_no
+inner join employees
+on employees.emp_no= dept_emp.emp_no
+where dept_name ='Sales' or dept_name='Development'
+
+select employees.last_name,count(employees.last_name) as count_name
+from employees
+group by last_name
+order by 2 desc
